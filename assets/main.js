@@ -6,60 +6,6 @@
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const EMAIL = 'aaryav1805.gangrade@gmail.com';
 
-  // Browsers can discard background tabs or reload a page after Back navigation.
-  // Checkpoint the scroll position so either case returns to the same section.
-  const scrollKey = 'ag:scroll:' + location.pathname + location.search;
-  const visitKey = 'ag:visited:' + location.pathname + location.search;
-  let scrollReady = false;
-  let lastScrollSave = 0;
-  let previouslyVisited = false;
-  try {
-    previouslyVisited = sessionStorage.getItem(visitKey) === '1';
-    sessionStorage.setItem(visitKey, '1');
-  } catch {
-    // Storage may be disabled; the portfolio should still function normally.
-  }
-  if (previouslyVisited) document.documentElement.classList.add('returning-visit');
-  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-
-  function saveScroll() {
-    if (!scrollReady) return;
-    try { sessionStorage.setItem(scrollKey, String(Math.round(window.scrollY))); } catch {}
-  }
-
-  window.addEventListener('pagehide', saveScroll);
-  document.addEventListener('visibilitychange', () => {
-    if (document.visibilityState === 'hidden') saveScroll();
-  });
-  window.addEventListener('pageshow', event => {
-    // A back/forward-cache restore already preserves the actual DOM and scroll.
-    if (event.persisted || location.hash) {
-      scrollReady = true;
-      updateScrollProgress();
-      return;
-    }
-    let savedY = 0;
-    try { savedY = Number(sessionStorage.getItem(scrollKey)); } catch {}
-    if (!Number.isFinite(savedY) || savedY <= 0) {
-      scrollReady = true;
-      updateScrollProgress();
-      return;
-    }
-    // Global smooth scrolling is great for anchor links, but should never
-    // animate browser history restoration back down from the hero.
-    const root = document.documentElement;
-    const previousBehavior = root.style.scrollBehavior;
-    root.style.scrollBehavior = 'auto';
-    window.scrollTo({ top: savedY, behavior: 'instant' });
-    requestAnimationFrame(() => {
-      window.scrollTo({ top: savedY, behavior: 'instant' });
-      root.style.scrollBehavior = previousBehavior;
-      scrollReady = true;
-      updateScrollProgress();
-    });
-  });
-
-
   const projects = {
     codebase: {
       id: '01 / AI ENGINEERING', title: 'Codebase Intelligence', subtitle: 'Ask better questions of your code.',
@@ -135,11 +81,6 @@
     const total = document.documentElement.scrollHeight - window.innerHeight;
     const ratio = total <= 0 ? 0 : Math.min(100, Math.max(0, (window.scrollY / total) * 100));
     if (progress) progress.style.width = ratio + '%';
-    // Write while scrolling too: a discarded background tab might never fire pagehide.
-    if (scrollReady && performance.now() - lastScrollSave > 150) {
-      saveScroll();
-      lastScrollSave = performance.now();
-    }
     scrollScheduled = false;
   }
   window.addEventListener('scroll', () => {
