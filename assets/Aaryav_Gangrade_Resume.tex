@@ -1,0 +1,154 @@
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\setlist[itemize]{itemsep=0pt, parsep=0pt}
+\usepackage[hidelinks,pdftitle={Aaryav Gangrade - Resume},pdfauthor={Aaryav Gangrade},pdfsubject={Resume},pdfkeywords={Aaryav Gangrade, Software Engineer, Resume}]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{eso-pic}
+
+% Margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-0.6in}
+\addtolength{\textheight}{1.2in}
+\setlength{\footskip}{4.08003pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\setlength{\parskip}{0pt}
+\setlength{\parsep}{0pt}
+\setlength{\tabcolsep}{0pt}
+
+\titleformat{\section}{
+  \large\scshape\raggedright
+}{}{0em}{}[\titlerule]
+
+\titlespacing*{\section}{0pt}{10pt}{1pt}
+
+\newcommand{\resumeItem}[1]{\item \small{#1}}
+
+\newcommand{\resumeSubheading}[4]{
+\vspace{2pt}
+\item
+\begin{tabular*}{0.96\textwidth}[t]{l@{\extracolsep{\fill}}r}
+\textbf{#1} & #2 \\
+\textit{\small#3} & \textit{\small #4} \\
+\end{tabular*}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+\vspace{2pt}
+\item
+\begin{tabular*}{0.96\textwidth}{l@{\extracolsep{\fill}}r}
+#1 & #2 \\
+\end{tabular*}
+}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}, itemsep=2pt, parsep=0pt, topsep=2pt, partopsep=0pt]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+
+\newcommand{\resumeItemListStart}{\begin{itemize}[label=\textbullet, itemsep=1pt, parsep=0pt, topsep=1pt, partopsep=0pt]}
+\newcommand{\resumeItemListEnd}{\end{itemize}}
+
+\begin{document}
+
+% Heading
+\begin{center}
+\textbf{\Huge Aaryav Gangrade} \par
+\vspace{4pt}
+\small +91-9691354445 \;$|$\;
+\href{mailto:aaryav1805.gangrade@gmail.com}{aaryav1805.gangrade@gmail.com} \par
+\vspace{2pt}
+\href{https://linkedin.com/in/aaryav-gangrade}{linkedin.com/in/aaryav-gangrade} \;$|$\;
+\href{https://github.com/AaryavGangrade}{github.com/AaryavGangrade} \;$|$\;
+\href{https://aaryavgangrade.github.io/portfolio/}{aaryavgangrade.github.io/portfolio}
+\end{center}
+
+% Education
+\section{Education}
+\resumeSubHeadingListStart
+\resumeSubheading
+{Vellore Institute of Technology}{Chennai, IN}
+{B.Tech in Computer Science and Engineering; CGPA: 7.61/10}{2022 -- 2026}
+\resumeSubheading
+{Mount Carmel School}{Bhopal, IN}
+{Class XII (PCM); 90.2\%}{2022}
+\resumeSubHeadingListEnd
+
+% Experience
+\section{Experience}
+\resumeSubHeadingListStart
+\resumeSubheading
+{NZESSENTIALS}{Christchurch, NZ (remote)}
+{Freelance Python Developer}{May 2025 - July 2025}
+\resumeItemListStart
+\resumeItem{Built a digital signature platform with web and desktop applications for secure signature collection and verification}
+\resumeItem{Created REST APIs to connect different parts of the application}
+\resumeItem{Built a fast system to store, retrieve, and verify digital signatures}
+\resumeItemListEnd
+\resumeSubheading
+      {Linux Club, VIT Chennai}{Chennai, IN}
+      {Operations Department Lead}{March 2023 -- March 2024}
+      \resumeItemListStart
+        \resumeItem{Led a team of 150 in organizing workshops and events promoting Linux and open-source software.}
+        \resumeItem{Coordinated logistics for club activities, ensuring smooth operations and effective communication.}
+        \resumeItem{Secured sponsorships totaling Rs 1,00,000 to support club events and initiatives, enhancing resources and outreach.}
+      \resumeItemListEnd
+\resumeSubHeadingListEnd
+
+% Projects
+\section{Projects}
+\resumeSubHeadingListStart
+
+\resumeProjectHeading
+{\href{https://aaryavgangrade.github.io/portfolio/projects/codebase-intelligence/}{\textbf{Agentic Graph-RAG for Codebase Intelligence}} $|$ \emph{Python, FAISS}}{}
+\resumeItemListStart
+\resumeItem{Built a RAG system that parses Python codebases into a searchable structure of functions, classes, and call relationships for deep, context-aware code understanding}
+\resumeItem{Benchmarked on the production \texttt{psf/requests} repo (31,441 LOC, 26 files): parsed the full codebase in 356 ms ($\sim$88,400 LOC/sec) and returned hybrid search + graph-expanded results in $\sim$340 ms, with vector/keyword lookups running in sub-millisecond time}
+\resumeItem{Compressed 31,441 LOC of raw codebase context down to under 700 relevant lines per query (97.8--98.6\% reduction), keeping only the most relevant code in the LLM's prompt}
+\resumeItemListEnd
+
+\resumeProjectHeading
+{\href{https://aaryavgangrade.github.io/portfolio/projects/nse-scanner/}{\textbf{NSE W/M-Curve Pattern Scanner}} $|$ \emph{Python, yfinance, pandas, ThreadPoolExecutor}}{}
+\resumeItemListStart
+\resumeItem{Built an automated technical-pattern scanner across 2,600+ NSE equities to detect W-curve (double-bottom) and M-curve reversal setups, using parallelized data pipelines, parquet caching, and a daily scheduler generating HTML signal reports}
+\resumeItem{Backtested W-curve strategy (TP 15\% / SL 5\% / 20-day hold / min score 90) to +22.70\% cumulative return over 2 years across 624 trades, vs. Nifty 50 benchmark's -0.07\% over the same period}
+\resumeItem{Backtested M-curve strategy (TP 10\% / SL 5\% / 20-day hold / min score 70, Nifty 500 universe) to +11.36\% cumulative return, outperforming the Nifty 50 benchmark}
+\resumeItemListEnd
+
+\resumeProjectHeading
+{\href{https://github.com/yopilot/Legal.ly}{\textbf{Legal.ly}} $|$ \emph{Kotlin}}{}
+\resumeItemListStart
+\resumeItem{Developed a native Android application during Smart India Hackathon to improve legal information accessibility}
+\resumeItem{Integrated chatbot-based assistance system to handle user queries and provide relevant legal guidance}
+\resumeItem{Implemented search and filtering mechanisms to help users find lawyers and legal information efficiently}
+\resumeItem{Developed structured backend communication for retrieving and displaying legal data dynamically}
+\resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+% Skills
+\section{Technical Skills}
+\begin{itemize}[leftmargin=0.15in, label={}, noitemsep]
+\small{
+\item{
+\textbf{Languages:} Python, Java, C++, JavaScript, Kotlin, SQL \\
+\textbf{Frameworks/Tools:} FastAPI, Firebase, Streamlit, Git, Pytest \\
+\textbf{AI/ML:} NLP, Embeddings, RAG Systems, LLM Agents \\
+\textbf{Web:} React, REST APIs, JSON \\
+\textbf{Libraries:} Pandas, NumPy, yfinance \\
+\textbf{Systems:} Linux, Windows \\
+\textbf{Android:} Kotlin, Android SDK, Jetpack Components, REST API Integration, Material Design
+}}
+\end{itemize}
+
+\end{document}
+
