@@ -15,3 +15,27 @@
 @media(max-width:380px){.hero{height:700px}.hero-index{font-size:7px}.hero-headline-wrap{top:38%}.hero-title{font-size:16vw}.hero-intro{font-size:15px}.contact-content h2{font-size:13.3vw}.email-link{font-size:16px}.project-meta h3{font-size:31px}.visual-upper,.visual-bottom{font-size:7px}}
 @media(pointer:coarse){.pointer-halo,.pointer-dot{display:none}.project-visual:after{transform:translateY(0) rotate(0);width:35px;height:35px;right:15px;bottom:17px;font-size:19px}.visual-bottom{right:65px}.project-arrow{display:none}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}.pointer-dot,.pointer-halo{display:none}.ticker-track{animation:none}}
+
+/* Resume access and portrait */
+.hero{min-height:900px}
+.hero-headline-wrap{top:18%}
+.hero-intro{bottom:-25%;pointer-events:auto}
+.hero-intro>p{margin:0}
+.resume-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;letter-spacing:normal}
+.resume-button{display:inline-flex;align-items:center;justify-content:center;gap:20px;min-height:46px;border:1px solid #859176;border-radius:999px;padding:14px 19px;font:10px var(--mono);font-weight:500;transition:background .2s,color .2s,border-color .2s}
+.resume-view{background:var(--lime);border-color:var(--lime);color:var(--ink)}
+.resume-view:hover{background:#e1ffa8;border-color:#e1ffa8}
+.resume-download{color:#f5f4eb;background:rgba(18,20,17,.65)}
+.resume-download:hover{background:#293322;border-color:var(--lime)}
+.about-portrait{margin:0;position:relative;overflow:hidden;border-radius:160px 160px 24px 24px;background:#bdc7ab;isolation:isolate}
+.about-portrait img{display:block;width:100%;height:600px;object-fit:cover;object-position:50% 30%}
+.portrait-caption{position:absolute;bottom:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;padding:45px 28px 25px;background:linear-gradient(transparent,rgba(14,24,14,.8));color:#fff;font-size:10px}
+.portrait-caption>span:last-child{font-size:28px;color:var(--lime)}
+.about-right .resume-actions{margin-top:26px}
+.about-right .resume-download{background:transparent;color:var(--ink);border-color:#849376}
+.about-right .resume-download:hover{background:#e1e7d4}
+@media(min-width:1500px){.hero{height:1000px;min-height:1000px}}
+@media(max-width:1200px){.hero-headline-wrap{top:20%}.hero-intro{bottom:-30%}.about-portrait img{height:560px}}
+@media(max-width:900px){.hero{min-height:860px;max-height:none}.hero-headline-wrap{top:27%}.hero-intro{bottom:auto}.hero-intro .resume-actions{margin-top:20px}.about-portrait{max-width:480px}.about-portrait img{height:500px}}
+@media(max-width:650px){.hero{height:860px;min-height:860px}.hero-headline-wrap{top:29%}.hero-intro{margin-top:28px}.resume-button{gap:12px;padding:13px 16px;font-size:9px}.about-portrait{width:100%;border-radius:120px 120px 20px 20px}.about-portrait img{height:auto;aspect-ratio:4/5;object-position:50% 25%}.portrait-caption{padding:40px 22px 20px}}
+@media(max-width:380px){.hero{height:820px;min-height:820px}.hero-headline-wrap{top:29%}.resume-actions{gap:8px}.resume-button{padding:12px 13px;font-size:8px}}
