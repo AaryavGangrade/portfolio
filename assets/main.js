@@ -12,7 +12,7 @@
       body: 'A repository-aware assistant for navigating unfamiliar Python codebases. Instead of treating code as plain paragraphs, the system maps functions, classes and their relationships, then uses hybrid retrieval and agentic search to surface evidence for developer questions.',
       points: ['AST-aware code parsing and function/call-graph extraction', 'Dense FAISS search blended with BM25 via reciprocal rank fusion', 'Graph neighborhood expansion, Gemini reranking and multi-step tool use', 'Streamlit interface for browsing and asking questions about a repository'],
       stack: ['Python', 'FAISS', 'BM25', 'NetworkX', 'Gemini', 'Streamlit'],
-      github: 'https://github.com/AaryavGangrade/RAG-Codebase'
+      github: 'https://github.com/AaryavGangrade/RAG-Codebase', demo: 'https://aaryavgangrade.github.io/portfolio/projects/codebase-intelligence/'
     },
     retail: {
       id: '02 / DATA ENGINEERING', title: 'RetailLake', subtitle: 'Raw data in. Reliable answers out.',
@@ -26,7 +26,7 @@
       body: 'A data pipeline for exploring double-bottom and double-top technical patterns in Indian equities. The system scans thousands of tickers, stores historical market data efficiently and produces tracking and backtesting reports. Historical simulations are exploratory, not a promise of future performance.',
       points: ['Scans more than 2,600 NSE-listed equities for W/M formations', 'Concurrent market-data retrieval and Parquet caching for repeat processing', 'Breakout/breakdown filtering, signal scoring and historical strategy simulation', 'Scheduled scans with HTML reports and live-tracking utilities'],
       stack: ['Python', 'Pandas', 'yfinance', 'Parquet', 'Concurrency'],
-      github: 'https://github.com/AaryavGangrade/nse-pattern-scanner'
+      github: 'https://github.com/AaryavGangrade/nse-pattern-scanner', demo: 'https://aaryavgangrade.github.io/portfolio/projects/nse-scanner/'
     },
     steel: {
       id: '04 / FORWARD DEPLOYED ENGINEERING', title: 'SteelOpt', subtitle: 'Useful beats impressive.',

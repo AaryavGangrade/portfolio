@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#080d13" />
+  <meta name="description" content="Codebase Intelligence — an AST-aware, graph-augmented AI assistant for understanding Python repositories. Built by Aaryav Gangrade." />
+  <meta property="og:title" content="Codebase Intelligence — Know your code." />
+  <meta property="og:description" content="Navigate complex Python repositories with AST-aware hybrid search, dependency graph expansion, and agentic reasoning." />
+  <title>Codebase Intelligence — Know your code.</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+  <script src="assets/app.js" defer></script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <div class="cursor-glow" aria-hidden="true"></div>
+  <header class="site-header" id="top">
+    <a href="#top" class="brand" aria-label="Codebase Intelligence, home"><span class="brand-glyph">{ <b>✳</b> }</span><span class="brand-type">codebase<span>intelligence</span><small>BY AARYAV GANGRADE</small></span></a>
+    <nav class="header-nav" aria-label="Primary navigation"><a href="../../">Portfolio</a><a href="#workspace">Workspace</a><a href="#architecture">Architecture</a></nav>
+    <a href="https://github.com/AaryavGangrade/RAG-Codebase" class="header-github" target="_blank" rel="noopener noreferrer">GITHUB <span aria-hidden="true">↗</span></a>
+    <a class="header-launch" href="#workspace">Start asking <span aria-hidden="true">↗</span></a>
+    <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open navigation"><span></span><span></span></button>
+  </header>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" hidden><a href="#workspace">Workspace</a><a href="#architecture">Architecture</a><a href="https://github.com/AaryavGangrade/RAG-Codebase" target="_blank" rel="noopener noreferrer">GitHub ↗</a></nav>
+
+  <main id="main">
+    <section class="workspace-section page-section" id="workspace">
+      <div class="workspace-intro">
+        <div>
+          <div class="eyebrow workspace-kicker"><span class="eyebrow-light"></span> YOUR REPOSITORY, EXPLAINED.</div>
+          <h1>Ask your <em>codebase.</em><span class="workspace-spark">✳</span></h1>
+          <p>Load Python code. Ask a question. Follow the evidence.</p>
+        </div>
+        <span class="workspace-intro-aside">AST + GRAPH + HYBRID RAG <span>↙</span></span>
+      </div>
+      <div class="workbench" id="workbench">
+        <div class="workbench-topbar"><div class="window-dots"><i></i><i></i><i></i></div><span>CODEBASE / INTELLIGENCE <span class="workbench-ver">/ INTERACTIVE WORKSPACE</span></span><div class="mode-indicator"><span class="mode-led"></span><span id="mode-label">GUIDED DEMO</span></div></div>
+        <div class="workbench-body">
+          <aside class="workspace-sidebar" aria-label="Repository sources">
+            <div class="workspace-sidebar-title"><span>YOUR REPOSITORY</span><span>⌘</span></div>
+            <div class="source-tabs" role="group" aria-label="Source type"><button type="button" data-source="github" class="source-tab active">GitHub URL</button><button type="button" data-source="zip" class="source-tab">Upload ZIP</button></div>
+            <div class="connect-group" id="github-connect"><label for="repo-url">REPOSITORY LINK</label><input id="repo-url" type="url" placeholder="github.com/owner/repo" autocomplete="url" spellcheck="false"/><button class="connect-button" id="connect-repo" type="button">Index repository <span>↗</span></button></div>
+            <div class="connect-group" id="zip-connect" hidden><label for="zip-input">PYTHON PROJECT ARCHIVE</label><label class="upload-zone" id="upload-zone" for="zip-input"><span class="upload-icon">↑</span><strong>Drop a .zip here</strong><span>or choose a file · max 12 MB</span></label><input id="zip-input" type="file" accept=".zip,application/zip" class="sr-only"/><button class="connect-button" id="connect-zip" type="button" disabled>Index ZIP <span>↗</span></button></div>
+            <div class="demo-select"><div class="demo-title">NO REPO READY?</div><button class="demo-btn" id="load-demo" type="button"><span class="demo-icon">✳</span><span>Use guided demo<small>Try three example questions</small></span><span>↗</span></button></div>
+            <div class="sidebar-files"><div class="sidebar-files-label"><span>CODE FILES</span><span id="file-count">04</span></div><div class="file-list" id="file-list" role="list"></div></div>
+            <div class="sidebar-footer"><span class="status-dot" id="api-light"></span><div><b id="api-status">Checking local engine…</b><small id="api-status-info">Guided demo works without setup</small></div></div>
+          </aside>
+          <div class="workspace-chat">
+            <div class="chat-header"><div><span class="chat-header-icon">✳</span><span>ASK THE CODE</span></div><div class="chat-header-actions"><button type="button" id="jump-to-connect" aria-label="Connect a repository">+ <span>Repository</span></button><button type="button" id="reset-chat" aria-label="Start a new conversation">↻ <span>New chat</span></button></div></div>
+            <div class="chat-scroll" id="chat-scroll" role="log" aria-label="Conversation" aria-live="polite"><div class="welcome-card"><span class="welcome-spark">✳</span><small>READY WHEN YOU ARE.</small><h3>What would you<br><em>like to understand?</em></h3><p>Try a sample question, or connect the local engine to chat with your own Python repo.</p></div><div class="suggestions" id="suggestions"><button class="suggestion" data-demo-question="How does the retrieval pipeline work?">How does the retrieval pipeline work? <span>↗</span></button><button class="suggestion" data-demo-question="How does the AST parser find functions?">How does the AST parser find functions? <span>↗</span></button><button class="suggestion" data-demo-question="How does the agent search the codebase?">How does the agent search the codebase? <span>↗</span></button></div></div>
+            <form class="chat-form" id="chat-form"><label for="chat-input" class="sr-only">Ask your codebase a question</label><textarea id="chat-input" placeholder="Ask about a function, flow, or dependency..." rows="1" maxlength="2000"></textarea><div class="chat-actions"><span>ENTER ↵ TO SEND · SHIFT+ENTER FOR NEW LINE</span><button id="send-query" type="submit" aria-label="Send question">↑</button></div></form>
+          </div>
+          <aside class="context-panel" aria-label="Context inspector"><div class="context-top"><span>CONTEXT INSPECTOR</span><span>✳</span></div><div class="context-tabs" role="tablist" aria-label="Inspector views"><button type="button" role="tab" aria-selected="true" class="context-tab active" data-panel="code">CODE</button><button type="button" role="tab" aria-selected="false" class="context-tab" data-panel="graph">GRAPH</button><button type="button" role="tab" aria-selected="false" class="context-tab" data-panel="sources">SOURCES</button></div><div class="context-main" id="context-main"><div class="snippet-header"><span id="snippet-file">retrieval/retriever.py</span><button type="button" id="copy-snippet" aria-label="Copy displayed code">COPY ↗</button></div><div class="code-pane" id="code-pane"></div></div><div class="context-bottom"><span>AST-AWARE CONTEXT</span><span id="context-pill">DEMO / 04 FILES</span></div></aside>
+        </div>
+      </div>
+      <p class="workspace-disclaimer"><span>ⓘ</span> Guided demo answers are prepared examples, not live AI. To ask arbitrary questions about your own repository, run the local Python backend with your Gemini key.</p>
+    </section>
+
+
+    <section class="architecture-section page-section" id="architecture">
+      <div class="section-top section-top-light"><span class="eyebrow"><span class="section-asterisk">✳</span> HOW IT WORKS</span><span class="section-serial">/ 02 — THE ENGINE</span></div>
+      <div class="architecture-intro"><h2>Under the <em>hood.</em></h2><p>Five steps from raw Python to grounded answers.</p></div>
+      <div class="pipeline" aria-label="Architecture pipeline with five stages"><div class="pipeline-step"><span class="pipeline-n">01</span><div class="pipeline-symbol">{ }</div><h3>Parse</h3><p>Python AST</p></div><span class="pipeline-arrow">→</span><div class="pipeline-step"><span class="pipeline-n">02</span><div class="pipeline-symbol">⋈</div><h3>Map</h3><p>Call graph</p></div><span class="pipeline-arrow">→</span><div class="pipeline-step"><span class="pipeline-n">03</span><div class="pipeline-symbol">⌕</div><h3>Retrieve</h3><p>FAISS + BM25</p></div><span class="pipeline-arrow">→</span><div class="pipeline-step"><span class="pipeline-n">04</span><div class="pipeline-symbol">⤨</div><h3>Rerank</h3><p>Gemini</p></div><span class="pipeline-arrow">→</span><div class="pipeline-step pipeline-final"><span class="pipeline-n">05</span><div class="pipeline-symbol">✳</div><h3>Explain</h3><p>Agentic answer</p></div></div>
+      <div class="architecture-caption"><span>PYTHON · FAISS · BM25 · NETWORKX · GEMINI</span><a href="https://github.com/AaryavGangrade/RAG-Codebase" target="_blank" rel="noopener noreferrer">EXPLORE THE ENGINE ↗</a></div>
+    </section>
+
+  </main>
+  <footer class="site-footer"><a href="#top" class="footer-brand">{ ✳ } <span>codebase/intelligence</span></a><div>BUILT BY <a href="https://github.com/AaryavGangrade" target="_blank" rel="noopener noreferrer">AARYAV GANGRADE ↗</a></div><span>© <span id="year">2026</span> / ASK BETTER QUESTIONS</span></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
